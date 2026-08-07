@@ -8,8 +8,7 @@ This is a purposely vulnerable target machine for practicing pen testing techniq
 ## 1.1. Port Scan Using Bash
 Creating a port scanner using a bash script.  
 portscan.sh
-```
-bash
+```bash
 #!/bin/bash
 if [ $# -ne 1 ] #checks if user has supplied an argument 
 then
