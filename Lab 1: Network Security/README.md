@@ -9,6 +9,7 @@ This is a purposely vulnerable target machine for practicing pen testing techniq
 Creating a port scanner using a bash script.  
 portscan.sh
 ```
+bash
 #!/bin/bash
 if [ $# -ne 1 ] #checks if user has supplied an argument 
 then
