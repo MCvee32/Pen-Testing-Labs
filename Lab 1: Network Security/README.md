@@ -6,30 +6,31 @@ This lab introduces some useful network exploit concepts and tools commonly used
 This is a purposely vulnerable target machine for practicing pen testing techniques.  
 
 ## 1.1. Port Scan Using Bash
-Creating a port scanner using a bash script.
+Creating a port scanner using a bash script.  
+portscan.sh
 ```
 #!/bin/bash
-if [ $# -ne 1 ] //checks if user has supplied an argument 
+if [ $# -ne 1 ] #checks if user has supplied an argument 
 then
     echo "Usage: `basename $0` {IP address or hostname}"
     exit 1
 fi
 
 # define a variable and set it to the value passed as the first argument ($1)
-ip_address=$1 //stores ip address from user
+ip_address=$1 # stores ip address from user
 # write the current date to the output file
-echo `date` >> $ip_address.open_ports //writes current date to ip address file
+echo `date` >> $ip_address.open_ports # writes current date to ip address file
 
 # for loop, where “i” starts at 1 and each time increments up to 65535
-for port in {1..65535} // scans every TCP port from 1 to 65535
+for port in {1..65535} # scans every TCP port from 1 to 65535
 do
     # use a short timeout, and write to the port on the IP address
-    timeout 1 echo >/dev/tcp/$ip_address/$port //attempts to to connect to each port
+    timeout 1 echo >/dev/tcp/$ip_address/$port # attempts to to connect to each port
     # if that succeeded (checks the return value stored in $?)
     if [ $? -eq 0 ] //checks if connection succeeded
     then
         # append results to a file named after the date and host
-        echo "port $port is open" >> "$ip_address.open_ports" //records the open port
+        echo "port $port is open" >> "$ip_address.open_ports" # records the open port
     fi
 done
 ```
